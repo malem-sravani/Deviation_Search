@@ -1,0 +1,97 @@
+<p-panel header="Deviation search">
+  <div *ngIf="errorMessages" class="row">
+   <p-messages severity ='error' [(value)]="errorMessages" [closable]="false" ></p-messages>
+  </div>
+  <p-panel [showHeader]="false">
+    <div>
+      <div class="row">
+        <div class="col-2">Initiation From Date* : </div>
+        <div class="col-2">
+          <p-calendar [(ngModel)]="searchCriteria.initiationFromDate" [showIcon]="true" dateFormat="dd-M-yy" [maxDate]="today"></p-calendar>
+        </div>
+        <div class="col-2"> Initiation To Date* :</div>
+        <div class="col-2">
+          <p-calendar [(ngModel)]="searchCriteria.initiationToDate" [showIcon]="true" dateFormat="dd-M-yy" [maxDate]="today"></p-calendar>
+        </div>
+        <div class="col-2"> Actions Only :</div>
+        <div class="col-2">
+          <p-checkbox [(ngModel)]="searchCriteria.checked" [binary]="true"></p-checkbox>
+        </div>
+      </div><br>
+      <div class="row">
+        <div class="col-2"> Deviation No. :</div>
+        <div class="col-2">
+          <input type="text" pInputText [(ngModel)]="searchCriteria.deviationNo">
+        </div>
+        <div class="col-2">Status* :</div>
+        <div class="col-2">
+          <p-multiSelect  [options]="searchCriteria.dstatus" placeholder="Choose" [(ngModel)]="searchCriteria.chooseDept"></p-multiSelect>
+        </div>
+      </div><br>
+      <div class="row">
+        <div class="col-2">Closure From Date :</div>
+        <div class="col-2">
+          <p-calendar [(ngModel)]="searchCriteria.closureFromDate" [showIcon]="true" dateFormat="dd-M-yy" [maxDate]="today"></p-calendar>
+        </div>
+        <div class="col-2">Closure To Date :</div>
+        <div class="col-2">
+          <p-calendar [(ngModel)]="searchCriteria.closureToDate" [showIcon]="true" dateFormat="dd-M-yy" [maxDate]="today"></p-calendar>
+        </div>
+      </div><br>
+      <div class="row">
+        <div class="col-2"> Initiated By :</div>
+        <div class="col-2">
+          <input type="text" pInputText [(ngModel)]="searchCriteria.initiatedBy">
+        </div>
+        <div class="col-2">Initiating Dept. :</div>
+        <div class="col-2">
+          <p-dropdown [options]="searchCriteria.initiatingDept"
+            [(ngModel)]="searchCriteria.chooseInitiatingDept" placeholder="Choose" ></p-dropdown>
+        </div>
+        <div class="col-2">Deviation Description :</div>
+        <div class="col-2">
+          <input type="text" pInputText [(ngModel)]="searchCriteria.deviationDescription">
+        </div>
+      </div><br>
+      <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4"></div>
+        <div style="text-align: right; margin-left: 122px;" class="col-3">
+          <p-button [style]="{'margin-left':'10px'}" (click)="searchDeviation()" label="Search" styleClass="p-button-info"></p-button>
+          <p-button [style]="{'margin-left':'10px'}" label="Clear" styleClass="p-button-danger" (click)="clear()"></p-button>
+        </div>
+      </div>
+    </div>
+  </p-panel>
+</p-panel>
+
+<p-panel header="List of Deviation Records"></p-panel>
+
+<p-table border="2" [value]="searchResults.records">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 4em;" class="text-center">S.No</th>
+        <th style="width: 10em;" class="text-center">Deviation No.</th>
+        <th style="width: 10em;" class="text-center">Initiation Date</th>
+        <th style="width: 25em;" class="text-center">Material/Product/Instrument Batch No/AR No/ID No</th>
+        <th style="width: 15em;" class="text-center">Deviation Description</th>
+        <th style="width: 10em;" class="text-center">Category</th>
+        <th style="width: 10em;" class="text-center">Closure Date</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-Record>
+      <tr>
+        <td style="width: 4em;" class="text-center">{{ Record.SNo }}</td>
+        <td style="width: 10em;" class="text-center"><u style="color: blue;">
+          <a (click)="ToggleSearchScreen()">{{ Record.DeviationNumber}}</a></u></td>
+        <td style="width: 10em;" class="text-center">{{ Record.InitiationDate }}</td>
+        <td style="width: 25em;" class="text-left">{{ Record.Material}}</td>
+        <td style="width: 15em;" class="text-left">{{ Record.DeviationDescription }}</td>
+        <td style="width: 10em;" class="text-left">{{ Record.Category}}</td>
+        <td style="width: 10em;" class="text-center">{{ Record.ClosureDate }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  
+  

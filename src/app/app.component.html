@@ -1,0 +1,12 @@
+<!-- app.component.html -->
+ <div>
+    <app-search-criteria *ngIf="(screenToggleService.searchCriteria$ | async)"></app-search-criteria>
+    <app-deviation-form *ngIf="!(screenToggleService.searchCriteria$ | async)"></app-deviation-form>
+    
+  </div>
+ 
+ 
+ 
+ 
+  <!-- <app-search-criteria></app-search-criteria>
+  <router-outlet></router-outlet>  -->

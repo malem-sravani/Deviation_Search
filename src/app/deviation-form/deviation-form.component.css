@@ -1,0 +1,18 @@
+.footer {
+    /* Flexbox setup to place buttons at the bottom */
+    justify-content:flex-start;
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    padding: 20px;
+    /* Optional background color */
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+}
+  
+  .button {
+    /* Add any additional button styling here */
+    margin-right: 10px;
+  }

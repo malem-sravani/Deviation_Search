@@ -1,0 +1,68 @@
+<p-panel header="Deviation Form">
+    <p-panel>
+        <div class="row">
+            <div class="col-2">Provisional No. :</div>
+            <div class="col-2">0</div>
+            <div class="col-2"> Deviation No. :</div>
+            <div class="col-2"></div>
+            <div class="col-2">Status :</div>
+            <div class="col-2">Initiation</div>
+        </div><br>
+        <div class="row">
+            <div class="col-2">Initiation Date :</div>
+            <div class="col-2">
+                <p-calendar [(ngModel)]="deviationForm.initiationDate" [showIcon]="true" dateFormat="dd-M-yy" [maxDate]="today"></p-calendar>
+            </div>
+            <div class="col-2">Initiated By :</div>
+            <div class="col-2">
+                <input type="text" pInputText [(ngModel)]="deviationForm.initiatedBy">
+            </div>
+            <div class="col-2"> Initiating Department : </div>
+            <div class="col-2">
+                <input type="text" pInputText [(ngModel)]="deviationForm.initiatingDepartment">
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-2"> Source :</div>
+            <div class="col-2">
+                <p-dropdown [options]="deviationForm.source" [(ngModel)]="deviationForm.selectSource" placeholder="Select"></p-dropdown>
+            </div>
+            <div class="col-2">Source No. :</div>
+            <div class="col-2">
+                <input type="text" pInputText [(ngModel)]="deviationForm.sourceNumber">
+            </div>
+            <div class="col-2"> Deviation Type :</div>
+            <div class="col-2">
+                <p-dropdown [options]="deviationForm.deviation" [(ngModel)]="deviationForm.deviationType" placeholder="Select"></p-dropdown>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-2">Identified By :</div>
+            <div class="col-2">
+                <p-dropdown [options]="deviationForm.identifiedBy" [(ngModel)]="deviationForm.identifier" placeholder="Select"></p-dropdown>
+            </div>
+            <div class="col-2"> Occurrence Date :</div>
+            <div class="col-2">
+                <p-calendar [(ngModel)]="deviationForm.occurrenceDate" [showIcon]="true" dateFormat="dd-M-yy" [maxDate]="today"></p-calendar>
+            </div>
+            <div class="col-2">Deviation Notified to :</div>
+            <div class="col-2">
+                <p-dropdown [options]="deviationForm.deviationNotifiedTo" [(ngModel)]="deviationForm.notifiedTo" placeholder="Select"></p-dropdown>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-2">Deviation Related to :</div>
+            <div class="col-2">
+                <p-dropdown [options]="deviationForm.deviationRelatedto" [(ngModel)]="deviationForm.relates" placeholder="Select" ></p-dropdown>
+            </div>
+            <div class="col-2">
+                Brief Description of Deviation :</div>
+            <div class="col-2">
+                <textarea pInputTextarea [(ngModel)]="deviationForm.description"></textarea>
+            </div>
+        </div>
+    </p-panel>
+</p-panel>
+<div class="footer">
+    <p-button label="Save" styleClass="p-button-success"></p-button>
+</div>
